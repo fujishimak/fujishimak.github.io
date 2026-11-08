@@ -1,0 +1,124 @@
+baseURL: https://fujishimak.github.io/jethomas-blog/
+title: Joshua E. Thomas
+theme: PaperMod
+pagination:
+  pagerSize: 10
+enableRobotsTXT: true
+enableEmoji: true
+
+defaultContentLanguage: en
+defaultContentLanguageInSubdir: false
+hasCJKLanguage: false
+
+outputs:
+  home: [HTML, RSS, JSON]
+
+params:
+  env: production
+  defaultTheme: auto
+  disableThemeToggle: false
+  ShowReadingTime: true
+  ShowShareButtons: false
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: false
+  ShowCodeCopyButtons: true
+  ShowToc: true
+  TocOpen: false
+  showtoc: true
+  comments: false
+  assets:
+    favicon: favicon.png
+    favicon16x16: favicon.png
+    favicon32x32: favicon.png
+    apple_touch_icon: favicon.png
+  # Only two contact methods: LinkedIn and Email
+  socialIcons:
+    - name: linkedin
+      url: https://www.linkedin.com/in/jetoomasu
+    - name: email
+      url: mailto:joshua.fujishima@gmail.com
+
+languages:
+  en:
+    languageName: English
+    weight: 1
+    title: Joshua E. Thomas
+    params:
+      profileMode:
+        enabled: true
+        title: Joshua E. Thomas
+        subtitle: >-
+          Senior Solutions Architect for Healthcare & Life Sciences with 18+ years in health IT.
+          I design cloud, interoperability and AI/ML systems for the public sector, building on
+          deep roots in medical imaging. Based in Kitchener, Ontario.
+        imageUrl: images/profile.jpg
+        imageTitle: Joshua E. Thomas
+        imageWidth: 150
+        imageHeight: 150
+        buttons:
+          - name: Blog
+            url: blog/
+          - name: Credentials
+            url: credentials/
+          - name: CV
+            url: https://drive.google.com/file/d/12ihn1bn78h_Jla2uVhBwyuDmX2tugovP/view?usp=drive_link
+    menu:
+      main:
+        - identifier: blog
+          name: Blog
+          url: /blog/
+          weight: 10
+        - identifier: credentials
+          name: Credentials
+          url: /credentials/
+          weight: 20
+        - identifier: cv
+          name: CV
+          url: https://drive.google.com/file/d/12ihn1bn78h_Jla2uVhBwyuDmX2tugovP/view?usp=drive_link
+          weight: 30
+  fr:
+    languageName: Français
+    languageCode: fr
+    weight: 2
+    title: Joshua E. Thomas
+    params:
+      profileMode:
+        enabled: true
+        title: Joshua E. Thomas
+        subtitle: >-
+          Architecte de solutions principal, Santé et sciences de la vie, avec plus de 18 ans
+          d'expérience en TI de la santé. Je conçois des systèmes infonuagiques, d'interopérabilité
+          et d'IA/AA pour le secteur public, avec une solide expertise en imagerie médicale.
+          Basé à Kitchener, en Ontario.
+        imageUrl: images/profile.jpg
+        imageTitle: Joshua E. Thomas
+        imageWidth: 150
+        imageHeight: 150
+        buttons:
+          - name: Blogue
+            url: blog/
+          - name: Titres et certifications
+            url: credentials/
+          - name: CV
+            url: https://drive.google.com/file/d/12ihn1bn78h_Jla2uVhBwyuDmX2tugovP/view?usp=drive_link
+    menu:
+      main:
+        - identifier: blog
+          name: Blogue
+          url: /fr/blog/
+          weight: 10
+        - identifier: credentials
+          name: Titres et certifications
+          url: /fr/credentials/
+          weight: 20
+        - identifier: cv
+          name: CV
+          url: https://drive.google.com/file/d/12ihn1bn78h_Jla2uVhBwyuDmX2tugovP/view?usp=drive_link
+          weight: 30
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    noClasses: false
