@@ -2,7 +2,7 @@
 title: "Tools Let Agents Act. Guardrails Keep Them Honest."
 date: 2026-11-08
 draft: false
-tags: [langchain, langgraph, guardrails, tool-calling, structured-output]
+tags: ["langchain", "langgraph", "guardrails", "tool-calling", "structured-output"]
 categories: ["AI Engineering"]
 ---
 

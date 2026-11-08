@@ -2,7 +2,7 @@
 title: "Testing a RAG Agent: Grade the Librarian and the Student Separately"
 date: 2026-11-08
 draft: false
-tags: [langchain, rag, deepeval, evaluation, testing]
+tags: ["langchain", "rag", "deepeval", "evaluation", "testing"]
 categories: ["AI Engineering"]
 ---
 

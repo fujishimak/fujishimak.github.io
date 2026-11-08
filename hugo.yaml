@@ -40,7 +40,7 @@ params:
 
 languages:
   en:
-    languageName: English
+    label: English
     weight: 1
     title: Joshua E. Thomas
     params:
@@ -71,8 +71,8 @@ languages:
           url: /credentials/
           weight: 20
   fr:
-    languageName: Français
-    languageCode: fr
+    label: Français
+    locale: fr
     weight: 2
     title: Joshua E. Thomas
     params:

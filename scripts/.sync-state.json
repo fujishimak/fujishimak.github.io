@@ -1,4 +1,10 @@
 {
-  "AI Engineering/Testing a RAG Agent - Grade the Librarian and the Student Separately.md": {"slug": "testing-a-rag-agent", "date": "2026-11-08"},
-  "AI Engineering/Tools Let Agents Act - Guardrails Keep Them Honest.md": {"slug": "tools-and-guardrails", "date": "2026-11-08"}
+  "AI Engineering/Testing a RAG Agent - Grade the Librarian and the Student Separately.md": {
+    "slug": "testing-a-rag-agent",
+    "date": "2026-11-08"
+  },
+  "AI Engineering/Tools Let Agents Act - Guardrails Keep Them Honest.md": {
+    "slug": "tools-and-guardrails",
+    "date": "2026-11-08"
+  }
 }
