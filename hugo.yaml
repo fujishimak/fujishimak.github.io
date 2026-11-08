@@ -50,7 +50,7 @@ languages:
         subtitle: >-
           Senior Solutions Architect for Healthcare & Life Sciences with 18+ years in health IT.
           I design cloud, interoperability and AI/ML systems for the public sector, building on
-          deep roots in medical imaging. Based in Kitchener, Ontario.
+          deep roots in medical imaging.
         imageUrl: images/profile.jpg
         imageTitle: Joshua E. Thomas
         imageWidth: 150
@@ -60,8 +60,6 @@ languages:
             url: blog/
           - name: Credentials
             url: credentials/
-          - name: CV
-            url: https://drive.google.com/file/d/12ihn1bn78h_Jla2uVhBwyuDmX2tugovP/view?usp=drive_link
     menu:
       main:
         - identifier: blog
@@ -72,10 +70,6 @@ languages:
           name: Credentials
           url: /credentials/
           weight: 20
-        - identifier: cv
-          name: CV
-          url: https://drive.google.com/file/d/12ihn1bn78h_Jla2uVhBwyuDmX2tugovP/view?usp=drive_link
-          weight: 30
   fr:
     languageName: Français
     languageCode: fr
@@ -89,7 +83,6 @@ languages:
           Architecte de solutions principal, Santé et sciences de la vie, avec plus de 18 ans
           d'expérience en TI de la santé. Je conçois des systèmes infonuagiques, d'interopérabilité
           et d'IA/AA pour le secteur public, avec une solide expertise en imagerie médicale.
-          Basé à Kitchener, en Ontario.
         imageUrl: images/profile.jpg
         imageTitle: Joshua E. Thomas
         imageWidth: 150
@@ -99,8 +92,6 @@ languages:
             url: blog/
           - name: Titres et certifications
             url: credentials/
-          - name: CV
-            url: https://drive.google.com/file/d/12ihn1bn78h_Jla2uVhBwyuDmX2tugovP/view?usp=drive_link
     menu:
       main:
         - identifier: blog
@@ -111,10 +102,6 @@ languages:
           name: Titres et certifications
           url: /fr/credentials/
           weight: 20
-        - identifier: cv
-          name: CV
-          url: https://drive.google.com/file/d/12ihn1bn78h_Jla2uVhBwyuDmX2tugovP/view?usp=drive_link
-          weight: 30
 
 markup:
   goldmark:
