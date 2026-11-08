@@ -48,7 +48,7 @@ languages:
         enabled: true
         title: Joshua E. Thomas
         subtitle: >-
-          Senior Solutions Architect for Healthcare & Life Sciences with 18+ years in health IT.
+          Senior Solutions Architect for Healthcare & Life Sciences with 18+ years in systems engineering and healthcare informatics.
           I design cloud, interoperability and AI/ML systems for the public sector, building on
           deep roots in medical imaging.
         imageUrl: images/profile.jpg
@@ -81,7 +81,7 @@ languages:
         title: Joshua E. Thomas
         subtitle: >-
           Architecte de solutions principal, Santé et sciences de la vie, avec plus de 18 ans
-          d'expérience en TI de la santé. Je conçois des systèmes infonuagiques, d'interopérabilité
+          d'expérience en génie des systèmes et en informatique de la santé. Je conçois des systèmes infonuagiques, d'interopérabilité
           et d'IA/AA pour le secteur public, avec une solide expertise en imagerie médicale.
         imageUrl: images/profile.jpg
         imageTitle: Joshua E. Thomas
