@@ -1,0 +1,12 @@
+# Search engines (Google, Bing, etc.) are welcome.
+User-agent: *
+Disallow:
+
+# AI training / scraping crawlers are not.
+{{- range slice "GPTBot" "ChatGPT-User" "OAI-SearchBot" "ClaudeBot" "Claude-Web" "Claude-User" "Claude-SearchBot" "anthropic-ai" "Google-Extended" "Applebot-Extended" "CCBot" "PerplexityBot" "Perplexity-User" "Bytespider" "Meta-ExternalAgent" "Meta-ExternalFetcher" "FacebookBot" "Amazonbot" "cohere-ai" "cohere-training-data-crawler" "Diffbot" "ImagesiftBot" "Omgilibot" "Timpibot" "YouBot" "AI2Bot" "Ai2Bot-Dolma" "DuckAssistBot" "MistralAI-User" "PanguBot" "Kangaroo Bot" "img2dataset" "Scrapy" }}
+
+User-agent: {{ . }}
+Disallow: /
+{{- end }}
+
+Sitemap: {{ "sitemap.xml" | absURL }}
