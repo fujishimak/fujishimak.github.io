@@ -15,6 +15,8 @@ list of folders). Each note's first subfolder under the source becomes its
 category (e.g. Blogs/AI Engineering/x.md -> category "AI Engineering");
 notes directly in the source folder get no category.
 
+Wikilinks between published notes ([[Note]] or [[Note|text]]) become site links.
+
 Optional front matter in a note: title, date (YYYY-MM-DD), slug, description,
 tags. Defaults: title = first '# Heading', date = first sync date (then kept),
 slug = generated from the title (then kept).
@@ -93,10 +95,7 @@ def build_post(note, category, state_entry, today):
     if meta.get("description"):
         lines.append(f"description: {json.dumps(meta['description'], ensure_ascii=False)}")
     lines += ["---", "", body.lstrip("\n").rstrip() + "\n"]
-    warn = []
-    if re.search(r"\[\[|!\[\[", body):
-        warn.append("contains Obsidian [[wikilinks]]/embeds, which Hugo will not resolve")
-    return slug, date, "\n".join(lines), warn
+    return slug, date, "\n".join(lines), title, note.stem
 
 
 def main():
@@ -113,30 +112,52 @@ def main():
     today = datetime.date.today().isoformat()
     new_state, actions, seen_slugs = {}, [], {}
 
+    posts = []  # (key, slug, date, content, title, stem)
     for src in map(Path, sources):
         if not src.is_dir():
             sys.exit(f"error: source folder not found: {src}")
         for note in sorted(src.rglob("*.md")):
             rel = note.relative_to(src)
+            if any(part.startswith(("_", ".")) for part in rel.parts):
+                continue  # _experiments/, .obsidian/, etc. are never published
             key = rel.as_posix()
             category = rel.parts[0] if len(rel.parts) > 1 else None
             result = build_post(note, category, state.get(key, {}), today)
             if result is None:
                 continue
-            slug, date, content, warn = result
+            slug, date, content, title, stem = result
             if slug in seen_slugs:
                 sys.exit(f"error: slug '{slug}' used by both {seen_slugs[slug]} and {key}")
             seen_slugs[slug] = key
-            target = out_dir / f"{slug}.md"
-            old = target.read_text(encoding="utf-8") if target.exists() else None
-            status = "unchanged" if old == content else ("update" if old else "new")
-            actions.append((status, f"{key} -> {target.name}"))
-            for w in warn:
-                actions.append(("warning", f"{key}: {w}"))
-            if status != "unchanged" and not args.dry_run:
-                out_dir.mkdir(parents=True, exist_ok=True)
-                target.write_text(content, encoding="utf-8")
-            new_state[key] = {"slug": slug, "date": date}
+            posts.append((key, slug, date, content, title, stem))
+
+    # Resolve Obsidian [[wikilinks]] between published notes into site links.
+    targets = {}
+    for key, slug, _d, _c, title, stem in posts:
+        targets[stem.lower()] = (slug, title)
+        targets[title.lower()] = (slug, title)
+
+    def resolve(m):
+        name = m.group(1).strip()
+        alias = m.group(2)
+        hit = targets.get(name.lower())
+        if not hit:
+            return m.group(0)
+        return f"[{(alias or hit[1]).strip()}](/blog/{hit[0]}/)"
+
+    link_re = re.compile(r"(?<!!)\[\[([^\]|#]+)(?:#[^\]|]*)?(?:\|([^\]]+))?\]\]")
+    for key, slug, date, content, title, stem in posts:
+        content = link_re.sub(resolve, content)
+        target = out_dir / f"{slug}.md"
+        old = target.read_text(encoding="utf-8") if target.exists() else None
+        status = "unchanged" if old == content else ("update" if old else "new")
+        actions.append((status, f"{key} -> {target.name}"))
+        if re.search(r"!?\[\[", content):
+            actions.append(("warning", f"{key}: unresolved [[wikilink]]/embed (target not published?); Hugo will show it as plain text"))
+        if status != "unchanged" and not args.dry_run:
+            out_dir.mkdir(parents=True, exist_ok=True)
+            target.write_text(content, encoding="utf-8")
+        new_state[key] = {"slug": slug, "date": date}
 
     # Remove posts we previously synced that are no longer published/present.
     for key, entry in state.items():
